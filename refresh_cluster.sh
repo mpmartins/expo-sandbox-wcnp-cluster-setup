@@ -11,7 +11,7 @@ kind create cluster --config kind/kind-cluster-config.yaml
 echo ""
 
 echo "-> Installing istio with the demo profile to make sure all features are installed..."
-#istioctl manifest generate --set profile=demo > generated/istio_manifest.yaml
+istioctl manifest generate --set profile=demo > generated/istio_manifest.yaml
 istioctl install --set profile=demo --context kind-kind
 kubectl patch service istio-ingressgateway --context kind-kind -n istio-system --patch "$(cat istio/patch-ingressgateway-nodeport.yaml)"
 echo ""
