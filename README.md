@@ -1,4 +1,4 @@
-# expo-sandbox-cluster-setup
+# expo-sandbox-wcnp-cluster-setup
 
 This repository contains a set of bash scripts that use the following tools to setup a sandbox cluster to test expo envoy plugins.
 
