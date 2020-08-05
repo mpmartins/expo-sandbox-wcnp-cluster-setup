@@ -1,0 +1,42 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: expo-ae-filter
+  namespace: experience-tools
+spec:
+  workloadSelector:
+    labels:
+      app: expo-echo-server
+  configPatches:
+  # The first patch adds the lua filter to the listener/http connection manager
+  - applyTo: HTTP_FILTER
+    match:
+      context: SIDECAR_INBOUND
+      listener:
+        portNumber: 8080
+        filterChain:
+          filter:
+            name: "envoy.http_connection_manager"
+            subFilter:
+              name: "envoy.router"
+    patch:
+      operation: INSERT_BEFORE
+      value: # lua filter specification
+       name: envoy.lua
+       typed_config:
+         "@type": "type.googleapis.com/envoy.config.filter.http.lua.v2.Lua"
+         inlineCode: |
+            -- Called on the request path.
+            function envoy_on_request(request_handle)
+              -- Wait for the entire request body and add a request header with the body size.
+              request_handle:logWarn("request_warn")
+              request_handle:headers():add("envoy_on_request", "start")
+              request_handle:headers():add("request_body_size", request_handle:body():length())
+            end
+        
+            -- Called on the response path.
+            function envoy_on_response(response_handle)
+              -- Wait for the entire response body and a response header with the body size.
+              response_handle:logWarn("response_warn")
+              response_handle:headers():add("response_body_size", response_handle:body():length())
+            end
