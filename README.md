@@ -53,7 +53,7 @@ Server: Docker Engine - Community
 
 ## Scripts
 
-Delete cluster and recreate it from scratch. 
+Delete cluster and recreate it from scratch.
 
 ```bash
 ▶ ./refresh_cluster.sh
