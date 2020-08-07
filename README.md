@@ -53,26 +53,10 @@ Server: Docker Engine - Community
 
 ## Scripts
 
-Delete cluster and recreate it from scratch. I usually need to execute this script while disconnected from VPN, but sometimes the images are already cached and there is no need to download them from the internet anymore.
+Delete cluster and recreate it from scratch. 
 
 ```bash
 ▶ ./refresh_cluster.sh
 ```
 
-Install echo server to the cluster with manual sidecar injection.
-
-```bash
-▶ ./install_echo_server.sh
-```
-
-Install echo server to the cluster with manual sidecar injection.
-
-```bash
-▶ ./install_envoy_filter.sh
-```
-
-Install kubernetes dashboard.
-
-```bash
-▶ ./install_kubernetes_dashboard.sh
-```
+Sometimes I need to execute the istio installation script while disconnected from VPN to be able to download the images, but you should be fine if the images are already cached and there is no need to download them from the internet anymore.
