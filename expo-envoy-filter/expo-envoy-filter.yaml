@@ -8,8 +8,7 @@ spec:
     labels:
       app: expo-echo-server
   configPatches:
-  # The first patch adds the lua filter to the listener/http connection manager
-  
+  # This patch adds the wasm filter to the listener/http connection manager
   - applyTo: HTTP_FILTER
     match:
       context: SIDECAR_INBOUND
@@ -33,11 +32,13 @@ spec:
             vm_config:
               vm_id: "my_vm_id"
               runtime: "envoy.wasm.runtime.v8"
-              allow_precompiled: false
+              allow_precompiled: true
               code:
                 remote:
                   http_uri:
-                    uri: http://expo-filter-provider/filter/files/untouched.wasm
+                    uri: http://localhost:8080/filter/files/untouched.wasm
                     cluster: outbound|8080||expo-filter-provider.experience-tools.svc.cluster.local
-                    timeout: 3s
+                    timeout: 50s
                   sha256: 2a987eafc28836b42e85943325791c6f9b5a087316f68a03aa6c2c06b6c41285
+                  retry_policy:
+                    num_retries: 20
