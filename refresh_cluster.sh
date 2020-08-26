@@ -15,10 +15,11 @@ then
 
     ./create_namespace.sh
 
-    ./install_echo_server.sh
-
     ./install_filter_provider.sh
 
+    ./install_echo_server.sh
+
+    sleep 5s
     ./install_envoy_filter.sh
 
 fi

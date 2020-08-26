@@ -38,7 +38,7 @@ spec:
                   http_uri:
                     uri: http://expo-filter-provider.experience-tools:8080/filter/files/untouched.wasm
                     cluster: outbound|8080||expo-filter-provider.experience-tools.svc.cluster.local
-                    timeout: 50s
+                    timeout: 5s
                   sha256: 2a987eafc28836b42e85943325791c6f9b5a087316f68a03aa6c2c06b6c41285
                   retry_policy:
                     num_retries: 20
