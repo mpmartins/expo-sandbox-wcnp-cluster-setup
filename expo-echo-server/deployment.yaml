@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: expo-echo-server-v1
+  labels:
+    app: expo-echo-server
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: expo-echo-server
+      version: v1
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/userVolume: '[{"name": "filter", "persistentVolumeClaim": {"claimName": "envoy-filters"}}]'
+        sidecar.istio.io/userVolumeMount: '[{"name": "filter", "mountPath": "var/local/lib/envoy-filters", "readonly": true}]'
+        #sidecar.istio.io/logLevel: "debug"
+        sidecar.istio.io/bootstrapOverride: "istio-custom-bootstrap-config"
+      labels:
+        app: expo-echo-server
+        version: v1
+    spec:
+      containers:
+      - name: expo-echo-server
+        image: "docker.prod.walmart.com/experience-tools/expodevclusterechoserver:0.0.5"
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080

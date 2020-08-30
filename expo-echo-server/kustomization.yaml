@@ -1,0 +1,9 @@
+namespace: experience-tools
+
+resources:
+  - namespace.yaml
+  - persistent-volume-claim.yaml
+  - custom-envoy-bootstrap.yaml
+  - deployment.yaml
+  - service.yaml
+  - virtual-service.yaml

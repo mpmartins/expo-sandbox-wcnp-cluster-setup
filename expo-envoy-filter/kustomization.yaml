@@ -1,0 +1,4 @@
+namespace: experience-tools
+
+resources:
+  - expo-envoy-filter.yaml

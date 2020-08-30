@@ -5,15 +5,13 @@ This repository contains a set of bash scripts that use the following tools to s
 You should be able to use brew to install the necessary tools:
 
 ```bash
-▶ brew install kind kubernetes-cli istioctl
+▶ brew install kubernetes-cli istioctl
 ▶ brew cask install docker
 ```
 
 Make sure to check the versions of your tools before starting. Here are the current versions I have installed:
 
 ```bash
-▶ kind version
-kind v0.8.1 go1.14.4 darwin/amd64
 ▶ kubectl version
 Client Version: version.Info{Major:"1", Minor:"16", GitVersion:"v1.16.2", GitCommit:"c97fe5036ef3df2967d086711e6c0c405941e14b", GitTreeState:"clean", BuildDate:"2019-10-15T23:43:08Z", GoVersion:"go1.12.10", Compiler:"gc", Platform:"darwin/amd64"}
 Server Version: version.Info{Major:"1", Minor:"18", GitVersion:"v1.18.2", GitCommit:"52c56ce7a8272c798dbc29846288d7cd9fbae032", GitTreeState:"clean", BuildDate:"2020-04-30T20:19:45Z", GoVersion:"go1.13.9", Compiler:"gc", Platform:"linux/amd64"}
@@ -53,10 +51,8 @@ Server: Docker Engine - Community
 
 ## Scripts
 
-Delete cluster and recreate it from scratch.
-
 ```bash
-▶ ./refresh_cluster.sh
+▶ ./install.sh
 ```
 
 Sometimes I need to execute the istio installation script while disconnected from VPN to be able to download the images, but you should be fine if the images are already cached and there is no need to download them from the internet anymore.
