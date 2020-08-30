@@ -5,7 +5,7 @@ This repository contains a set of bash scripts that use the following tools to s
 You should be able to use brew to install the necessary tools:
 
 ```bash
-▶ brew install kubernetes-cli istioctl
+▶ brew install kubernetes-cli istioctl kustomize
 ▶ brew cask install docker
 ```
 
@@ -16,9 +16,9 @@ Make sure to check the versions of your tools before starting. Here are the curr
 Client Version: version.Info{Major:"1", Minor:"16", GitVersion:"v1.16.2", GitCommit:"c97fe5036ef3df2967d086711e6c0c405941e14b", GitTreeState:"clean", BuildDate:"2019-10-15T23:43:08Z", GoVersion:"go1.12.10", Compiler:"gc", Platform:"darwin/amd64"}
 Server Version: version.Info{Major:"1", Minor:"18", GitVersion:"v1.18.2", GitCommit:"52c56ce7a8272c798dbc29846288d7cd9fbae032", GitTreeState:"clean", BuildDate:"2020-04-30T20:19:45Z", GoVersion:"go1.13.9", Compiler:"gc", Platform:"linux/amd64"}
 ▶ istioctl version
-client version: 1.6.5
-control plane version: 1.6.5
-data plane version: 1.6.5 (4 proxies)
+client version: 1.6.8
+control plane version: 1.6.8
+data plane version: 1.6.8 (4 proxies)
 ▶ docker version
 Client: Docker Engine - Community
  Version:           19.03.12
