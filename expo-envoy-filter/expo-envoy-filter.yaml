@@ -39,7 +39,7 @@ spec:
                 "@type": "type.googleapis.com/google.protobuf.StringValue"
                 value: |
                   {
-                    "query_param": {
-                      "content-type": "application/x-www-form-urlencoded"
+                    "json": {
+                      "test": true
                     }
                   }
