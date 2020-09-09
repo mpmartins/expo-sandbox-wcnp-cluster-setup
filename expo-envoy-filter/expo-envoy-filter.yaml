@@ -21,18 +21,25 @@ spec:
       operation: INSERT_BEFORE
       value: 
         name: envoy.filters.http.wasm
-        typedConfig:
+        typed_config:
           "@type": type.googleapis.com/udpa.type.v1.TypedStruct
           typeUrl: type.googleapis.com/envoy.config.filter.http.wasm.v2.Wasm
           value:
-            config:
-              name: "expo_filter_name"
-              root_id: "expo_filter_root_id"
-              configuration: '{ "header_name": "x-wmt-expo", "header_append_value": "INJECTED_ON_PLUGIN" }'
+            config: 
+              name: "ExpoFilter"
+              root_id: "ExpoFilterRootId"
               vm_config:
-                vm_id: "my_vm_id"
+                vm_id: "ExpoFilterRootVmId"
                 runtime: "envoy.wasm.runtime.v8"
-                allow_precompiled: true
                 code:
                   local:
-                    filename: /var/local/lib/envoy-filters/untouched.wasm
+                    filename: "/var/local/lib/wasm/ExpoFilter.wasm"
+                allow_precompiled: true
+              configuration:
+                "@type": "type.googleapis.com/google.protobuf.StringValue"
+                value: |
+                  {
+                    "query_param": {
+                      "content-type": "application/x-www-form-urlencoded"
+                    }
+                  }

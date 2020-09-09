@@ -2,33 +2,36 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: istio-custom-bootstrap-config
-  namespace: default
 data:
-  custom_bootstrap: | 
-    - name: walmart.expo.worker
-      typed_config:
-        "@type": "type.googleapis.com/envoy.extensions.wasm.v3.WasmService"
-        singleton: true
-        config:
-            name: "expo_worker"
-            root_id: "ExpoWorkerRoot"
-            configuration:
-                "@type": "type.googleapis.com/google.protobuf.StringValue"
-                value: |
-                    {
-                        "local_service_id": "demo",
-                        "grpc_service": {
-                            "envoy_grpc":{
-                                "cluster_name": "expo-service",
-                            }
-                        },
-                        "grpc_timeout_milliseconds": 1000,
-                        "poll_interval_milliseconds": 5000,
-                    }
-            vm_config:
-                vm_id: "my_vm_id"
-                runtime: "envoy.wasm.runtime.v8"
-                allow_precompiled: true
-                code:
-                    local:
-                        filename: "/etc/worker.wasm"
+  # custom_bootstrap.json: | 
+  #   {
+  #     "bootstrap_extensions": [
+  #         {
+  #           "name": "expo.envoy.wasm.worker",
+  #           "typed_config": {
+  #               "@type": "type.googleapis.com/envoy.extensions.wasm.v3.WasmService",
+  #               "singleton": true,
+  #               "config": {
+  #                 "name": "ExpoWorker",
+  #                 "root_id": "ExpoWorkerRootId",
+  #                 "configuration": {
+  #                     "@type": "type.googleapis.com/google.protobuf.StringValue",
+  #                     "value": "{\"poll_interval_milliseconds\": 5000}"
+  #                 },
+  #                 "vm_config": {
+  #                     "vm_id": "ExpoWorkerVmId",
+  #                     "runtime": "envoy.wasm.runtime.v8",
+  #                     "allow_precompiled": true,
+  #                     "code": {
+  #                       "local": {
+  #                           "filename": "/etc/ExpoWorker.wasm"
+  #                       }
+  #                     }
+  #                 }
+  #               }
+  #           }
+  #         }
+  #     ]
+  #   }
+  
+  placeholder: |

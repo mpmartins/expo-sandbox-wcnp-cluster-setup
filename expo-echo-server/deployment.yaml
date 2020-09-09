@@ -14,10 +14,10 @@ spec:
   template:
     metadata:
       annotations:
-        sidecar.istio.io/userVolume: '[{"name": "filter", "persistentVolumeClaim": {"claimName": "envoy-filters"}}]'
-        sidecar.istio.io/userVolumeMount: '[{"name": "filter", "mountPath": "var/local/lib/envoy-filters", "readonly": true}]'
-        #sidecar.istio.io/logLevel: "debug"
         sidecar.istio.io/bootstrapOverride: "istio-custom-bootstrap-config"
+        sidecar.istio.io/userVolume: '[{"name": "filter", "persistentVolumeClaim": {"claimName": "wasm-binaries"}}]'
+        sidecar.istio.io/userVolumeMount: '[{"name": "filter", "mountPath": "var/local/lib/wasm", "readonly": true}]'
+        sidecar.istio.io/logLevel: "debug"
       labels:
         app: expo-echo-server
         version: v1

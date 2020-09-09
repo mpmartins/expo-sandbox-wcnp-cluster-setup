@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "-> Installing persistent volume..."
-mkdir /tmp/envoy-filters
-cp ./wasm/* /tmp/envoy-filters
+mkdir /tmp/wasm
+cp ./wasm/* /tmp/wasm
 kustomize build persistent-volume | kubectl apply -f -
 echo ""
