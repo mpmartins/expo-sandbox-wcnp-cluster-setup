@@ -12,4 +12,4 @@ spec:
     - ReadOnlyMany
   persistentVolumeReclaimPolicy: Delete
   hostPath:
-    path: "/tmp/wasm"
+    path: "/private/tmp/wasm"

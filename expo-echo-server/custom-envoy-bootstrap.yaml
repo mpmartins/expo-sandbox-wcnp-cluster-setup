@@ -3,35 +3,33 @@ kind: ConfigMap
 metadata:
   name: istio-custom-bootstrap-config
 data:
-  # custom_bootstrap.json: | 
-  #   {
-  #     "bootstrap_extensions": [
-  #         {
-  #           "name": "expo.envoy.wasm.worker",
-  #           "typed_config": {
-  #               "@type": "type.googleapis.com/envoy.extensions.wasm.v3.WasmService",
-  #               "singleton": true,
-  #               "config": {
-  #                 "name": "ExpoWorker",
-  #                 "root_id": "ExpoWorkerRootId",
-  #                 "configuration": {
-  #                     "@type": "type.googleapis.com/google.protobuf.StringValue",
-  #                     "value": "{\"poll_interval_milliseconds\": 5000}"
-  #                 },
-  #                 "vm_config": {
-  #                     "vm_id": "ExpoWorkerVmId",
-  #                     "runtime": "envoy.wasm.runtime.v8",
-  #                     "allow_precompiled": true,
-  #                     "code": {
-  #                       "local": {
-  #                           "filename": "/etc/ExpoWorker.wasm"
-  #                       }
-  #                     }
-  #                 }
-  #               }
-  #           }
-  #         }
-  #     ]
-  #   }
-  
-  placeholder: |
+  custom_bootstrap.json: | 
+    {
+      "bootstrap_extensions": [
+          {
+            "name": "expo.envoy.wasm.worker",
+            "typed_config": {
+                "@type": "type.googleapis.com/envoy.extensions.wasm.v3.WasmService",
+                "singleton": true,
+                "config": {
+                  "name": "ExpoWorker",
+                  "root_id": "ExpoWorkerRootId",
+                  "configuration": {
+                      "@type": "type.googleapis.com/google.protobuf.StringValue",
+                      "value": "{\"poll_interval_milliseconds\": 5000}"
+                  },
+                  "vm_config": {
+                      "vm_id": "ExpoWorkerVmId",
+                      "runtime": "envoy.wasm.runtime.v8",
+                      "allow_precompiled": true,
+                      "code": {
+                        "local": {
+                            "filename": "/var/local/lib/wasm/ExpoWorker.wasm"
+                        }
+                      }
+                  }
+                }
+            }
+          }
+      ]
+    }
